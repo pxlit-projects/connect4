@@ -1,0 +1,2 @@
+let BACKEND_URL = "https://localhost:5001";
+let GUID_EMPTY = '00000000-0000-0000-0000-000000000000';

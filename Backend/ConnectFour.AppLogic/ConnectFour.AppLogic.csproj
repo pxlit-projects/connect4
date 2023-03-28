@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConnectFour.Common\ConnectFour.Common.csproj" />
+    <ProjectReference Include="..\ConnectFour.Domain\ConnectFour.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
