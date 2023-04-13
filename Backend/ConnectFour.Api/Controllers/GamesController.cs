@@ -47,7 +47,7 @@ public class GamesController : ApiControllerBase
     /// </summary>
     /// <param name="id">Id (guid) of the game</param>
     [HttpGet("{id}/possible-moves")]
-    [ProducesResponseType(typeof(IGame), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IReadOnlyList<IMove>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public IActionResult GetPossibleMovesForGame(Guid id)

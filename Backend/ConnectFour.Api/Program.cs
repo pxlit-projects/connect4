@@ -152,7 +152,7 @@ public class Program
         builder.Services.AddSingleton<IGameRepository, InMemoryGameRepository>();
         int miniMaxSearchDepth = builder.Configuration.GetValue<int>("MiniMaxSearchDepth");
         builder.Services.AddScoped<IGamePlayStrategy, MiniMaxGamePlayStrategy>(services =>
-            new MiniMaxGamePlayStrategy(services.GetRequiredService<IGridEvaluator>(), miniMaxSearchDepth));
+            new MiniMaxGamePlayStrategy(services.GetService<IGridEvaluator>(), miniMaxSearchDepth));
         builder.Services.AddScoped<IGridEvaluator>(_ => new GridEvaluator() as IGridEvaluator);
 
         var app = builder.Build();
