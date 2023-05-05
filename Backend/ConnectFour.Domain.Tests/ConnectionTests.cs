@@ -48,7 +48,7 @@ public class ConnectionTests
     [TestCase(0, 0, 0, 3, DiscColor.Yellow, 4)]
     [TestCase(1, 1, 1, 1, DiscColor.Red, 1)]
     [TestCase(0, 2, 0, 3, DiscColor.Yellow, 2)]
-    [TestCase(1, 2, 3, 5, DiscColor.Red, 4)]
+    [TestCase(1, 2, 4, 5, DiscColor.Red, 4)]
     [TestCase(5, 0, 3, 2, DiscColor.Red, 3)]
     public void Constructor_ShouldInitializeCorrectly(int rowFrom, int columnFrom, int rowTo, int columnTo, DiscColor color, int expectedSize)
     {
