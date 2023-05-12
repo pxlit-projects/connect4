@@ -32,7 +32,7 @@ public class GameTests
         _player2MockBuilder = new PlayerMockBuilder();
         _gridMockBuilder = new GridMockBuilder();
         _grid = _gridMockBuilder.Object;
-            
+
         _game = new Game(_player1MockBuilder.Object, _player2MockBuilder.Object, _grid) as IGame;
     }
 
@@ -53,7 +53,7 @@ public class GameTests
         //Assert
         IPlayer player1 = _player1MockBuilder.Object;
         IPlayer player2 = _player2MockBuilder.Object;
-       
+
         Assert.That(_game.Player1, Is.SameAs(player1), "The 'Player1' property is not set correctly.");
         Assert.That(_game.Player2, Is.SameAs(player2), "The 'Player2' property is not set correctly.");
         Assert.That(_game.PlayerToPlayId, Is.EqualTo(player1.Id), "The 'PlayerToPlayId' should be the id of player1 after construction.");
@@ -137,7 +137,7 @@ public class GameTests
 
         IPlayer player1Opponent = _game.GetOpponent(_game.Player1.Id);
         IPlayer player2Opponent = _game.GetOpponent(_game.Player2.Id);
-        
+
         Assert.That(player1Opponent, Is.SameAs(_game.Player2), "The opponent of player 1 should be player 2.");
         Assert.That(player2Opponent, Is.SameAs(_game.Player1), "The opponent of player 2 should be player 1.");
     }
@@ -226,6 +226,9 @@ public class GameTests
 
         //Act + Assert
         Assert.That(() => _game.ExecuteMove(playerNotToPlayId, move), Throws.InvalidOperationException);
+        Assert.That(() => _game.ExecuteMove(playerNotToPlayId, move),
+            Throws.InvalidOperationException.With.Message.Length.GreaterThan(0),
+            "Make sure the exception contains a meaningful message.");
     }
 
     [MonitoredTest("ExecuteMove - Game is finished - Should throw InvalidOperationException")]
@@ -241,6 +244,9 @@ public class GameTests
 
         //Act + Assert
         Assert.That(() => _game.ExecuteMove(_game.Player1.Id, move), Throws.InvalidOperationException);
+        Assert.That(() => _game.ExecuteMove(_game.Player1.Id, move),
+            Throws.InvalidOperationException.With.Message.Length.GreaterThan(0),
+            "Make sure the exception contains a meaningful message.");
     }
 
     [MonitoredTest("ExecuteMove - Player does not have disc - Should throw InvalidOperationException")]
@@ -257,6 +263,9 @@ public class GameTests
 
         //Act + Assert
         Assert.That(() => _game.ExecuteMove(_game.Player1.Id, move), Throws.InvalidOperationException);
+        Assert.That(() => _game.ExecuteMove(_game.Player1.Id, move),
+            Throws.InvalidOperationException.With.Message.Length.GreaterThan(0),
+            "Make sure the exception contains a meaningful message.");
     }
 
     [MonitoredTest("ExecuteMove - Multiple valid moves - Should slide in the discs and switch turns")]
